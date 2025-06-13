@@ -1,0 +1,18 @@
+<h1>Todos los Pins</h1>
+
+<%= link_to "Nuevo Pin", new_pin_path %>
+
+<hr>
+
+<div id="pins">
+  <% @pins.each do |pin| %>
+    <div>
+      <% if pin.image.attached? %>
+        <%= image_tag pin.image, width: "300px" %>
+      <% end %>
+      <p><%= pin.description %></p>
+      <p><em>Publicado por: <%= pin.user.email %></em></p>
+    </div>
+    <hr>
+  <% end %>
+</div>
