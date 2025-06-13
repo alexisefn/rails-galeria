@@ -62,5 +62,5 @@ group :test do
   gem "selenium-webdriver"
 end
 
+# Para registro y autenticación de usuarios
 gem "devise"
-
