@@ -8,7 +8,9 @@
   <% @pins.each do |pin| %>
     <div>
       <% if pin.image.attached? %>
-        <%= image_tag pin.image, width: "300px" %>
+        <%= link_to pin do %>
+          <%= image_tag pin.image, width: "300px" %>
+        <% end %>
       <% end %>
       <p><%= pin.description %></p>
       <p><em>Publicado por: <%= pin.user.email %></em></p>
