@@ -1,0 +1,88 @@
+/* Estilos Generales para todo el sitio */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #1c1e21;
+}
+
+a {
+    color: #0866ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para el botón principal */
+.button {
+    display: inline-block;
+    background-color: #0866ff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #0655d4;
+    text-decoration: none;
+}
+
+
+/* --- ESTILOS DE LA CUADRÍCULA (GRID) --- */
+
+/* 1. El Contenedor Principal */
+.pins-container {
+    display: grid;
+    /* Cuadrícula responsive */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    /* Espacio entre las tarjetas */
+    margin-top: 20px;
+}
+
+/* 2. Cada Tarjeta Individual (Pin Card) */
+.pin-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* Asegura que la imagen no se salga de los bordes redondeados */
+    break-inside: avoid;
+    /* Ayuda a prevenir que las tarjetas se corten en la cuadrícula */
+}
+
+/* 3. La Imagen dentro de la tarjeta */
+.pin-card img {
+    width: 100%;
+    /* La imagen ocupa todo el ancho de la tarjeta */
+    height: auto;
+    /* La altura se ajusta automáticamente */
+    display: block;
+    /* Elimina espacios extra debajo de la imagen */
+}
+
+/* 4. El cuerpo de la tarjeta (texto) */
+.pin-card-body {
+    padding: 15px;
+}
+
+.pin-description {
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.pin-user {
+    font-size: 14px;
+    color: #65676b;
+    margin: 0;
+}
