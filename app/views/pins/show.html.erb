@@ -13,6 +13,17 @@
 
   <br>
 
+  <%# --- Bloque de Acciones para el dueño del Pin --- %>
+  <% if user_signed_in? && @pin.user == current_user %>
+    <div style="margin-top: 20px; padding: 10px; background-color: #f0f2f5; border-radius: 8px;">
+      <%= link_to 'Editar Pin', edit_pin_path(@pin), class: "button" %>
+    
+      <%= button_to 'Eliminar Pin', @pin, method: :delete, 
+        data: { turbo_confirm: '¿Estás seguro de que quieres eliminar este pin? No se puede deshacer.' }, 
+        class: "button", style: "background-color: #dc3545; margin-left: 10px;" %>
+    </div>
+  <% end %>
+
   <%= link_to '← Volver a la galería', root_path %>
 
   <%# --- SECCIÓN DE COMENTARIOS --- %>

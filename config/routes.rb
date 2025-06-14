@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :pins, only: [ :index, :new, :create, :show ] do
+  resources :pins do
     resources :comments, only: [ :create ]
   end
+  # Al remover only: [ : ], resources :pins obtiene acceso a todas sus acciones RESTful
 
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

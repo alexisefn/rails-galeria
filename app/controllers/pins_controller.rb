@@ -1,5 +1,7 @@
 class PinsController < ApplicationController
   before_action :authenticate_user!, only: [ :new, :create ]
+  before_action :authorize_owner!, only: [ :edit, :update, :destroy ]
+  # Solamente usuarios que subieron sus imágenes tienen acceso para editar o eliminarlas las mismas
 
   def index
     @pins = Pin.all.order(created_at: :desc)
@@ -23,7 +25,32 @@ class PinsController < ApplicationController
     @pin = Pin.find(params[:id])
   end
 
+  def edit
+    @pin = Pin.find(params[:id])
+  end
+
+  def update
+    @pin = Pin.find(params[:id])
+    if @pin.update(pin_params)
+      redirect_to @pin, notice: "Pin actualizado exitosamente."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @pin = Pin.find(params[:id])
+    @pin.destroy
+    redirect_to root_path, notice: "Pin eliminado exitosamente.", status: :see_other
+  end
+
   private
+
+  # Para evitar que usuarios accedan directamente a la opción editar
+  def authorize_owner!
+    @pin = Pin.find(params[:id])
+    redirect_to root_path, alert: "No tienes permiso para realizar esta acción." unless @pin.user == current_user
+  end
 
   def pin_params
     params.require(:pin).permit(:description, :image)
