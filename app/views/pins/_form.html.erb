@@ -1,9 +1,7 @@
-<h1>Nuevo Pin</h1>
-
 <%= form_with(model: @pin) do |form| %>
   <% if @pin.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@pin.errors.count, "error") %> impidieron guardar este pin:</h2>
+      <h2><%= pluralize(@pin.errors.count, "error") %> impidieron guardar esta foto:</h2>
       <ul>
         <% @pin.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -23,6 +21,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "Crear Pin" %>
+    <%= form.submit "Subir Foto" %>
   </div>
 <% end %>
