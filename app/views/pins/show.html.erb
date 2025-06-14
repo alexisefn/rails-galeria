@@ -15,4 +15,39 @@
 
   <%= link_to '← Volver a la galería', root_path %>
 
+  <%# --- SECCIÓN DE COMENTARIOS --- %>
+  <div style="margin-top: 40px;">
+    <h2 style="font-size: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">Comentarios</h2>
+
+    <%# Lista de comentarios existentes %>
+    <div id="comments" style="margin-top: 20px;">
+      <% if @pin.comments.any? %>
+        <% @pin.comments.order(created_at: :desc).each do |comment| %>
+          <div style="border-bottom: 1px solid #eee; padding: 10px 0;">
+            <p><strong><%= comment.user.email %></strong> dijo:</p>
+            <p><%= comment.body %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Aún no hay comentarios. ¡Sé el primero!</p>
+      <% end %>
+    </div>
+
+    <%# Formulario para añadir un nuevo comentario %>
+    <div id="comment-form" style="margin-top: 30px;">
+      <% if user_signed_in? %>
+        <%= form_with(model: [@pin, @pin.comments.build]) do |form| %>
+          <div class="field">
+            <%= form.label :body, "Tu comentario:" %><br>
+            <%= form.text_area :body, rows: 4, style: "width: 100%;" %>
+          </div>
+          <div class="actions" style="margin-top: 10px;">
+            <%= form.submit "Enviar Comentario" %>
+          </div>
+        <% end %>
+      <% else %>
+        <p><%= link_to "Inicia sesión", new_user_session_path %> para dejar un comentario.</p>
+      <% end %>
+    </div>
+  </div>
 </div>
