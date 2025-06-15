@@ -86,3 +86,13 @@ a:hover {
     color: #65676b;
     margin: 0;
 }
+
+/* 5. Estilos para el contenedor de los botones de acción del Pin (contenedor de fotos) */
+.pin-actions {
+    display: flex;
+    /* Activa Flexbox: Los elementos hijos ahora se ponen en fila. */
+    align-items: center;
+    /* Alinea los botones verticalmente en el centro (por si tuvieran alturas distintas). */
+    gap: 15px;
+    /* Crea un espacio de 15px entre cada elemento hijo (en vez de usar margin) */
+}
