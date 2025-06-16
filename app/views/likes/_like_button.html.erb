@@ -1,0 +1,14 @@
+<div class="like-section">
+  <% if user_signed_in? %>
+    <% if current_user.likes?(pin) %>
+      <%# Si ya le dio "Me Gusta", muestra el botón de "Quitar Me Gusta" %>
+      <%= button_to "❤️ #{pin.likes.count} Me Gusta", pin_like_path(pin), method: :delete %>
+    <% else %>
+      <%# Si no le ha dado "Me Gusta", muestra el botón de "Me Gusta" %>
+      <%= button_to "🤍 #{pin.likes.count} Me Gusta", pin_like_path(pin), method: :post %>
+    <% end %>
+  <% else %>
+    <%# Si no ha iniciado sesión, solo muestra el contador %>
+    <span>🤍 <%= pin.likes.count %> Me Gusta</span>
+  <% end %>
+</div>

@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :pins do
     resources :comments, only: [ :create ]
+    # Al remover only: [ : ], resources :pins obtiene acceso a todas sus acciones RESTful
+    resource :like, only: [ :create, :destroy ]
+    # Se usa "resource" porque un usuario solo puede tener un "Me Gusta" por foto.
   end
-  # Al remover only: [ : ], resources :pins obtiene acceso a todas sus acciones RESTful
 
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -16,5 +18,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "pins#index" # Que la página de inicio sea el listado de pins
+  root "pins#index" # Que la página de inicio sea el listado de pins (entradas por foto)
 end
