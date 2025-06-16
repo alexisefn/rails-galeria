@@ -96,3 +96,69 @@ a:hover {
     gap: 15px;
     /* Crea un espacio de 15px entre cada elemento hijo (en vez de usar margin) */
 }
+
+/* --- ESTILOS GENERALES PARA FORMULARIOS --- */
+
+/* Contenedor principal del formulario */
+.form-container {
+    max-width: 500px;
+    /* Limita el ancho del formulario para que no sea demasiado grande en pantallas anchas */
+    margin: 20px auto;
+    /* Centra el formulario en la página */
+    padding: 25px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor para cada campo (label + input) */
+.form-field {
+    margin-bottom: 20px;
+    /* Espacio debajo de cada campo */
+}
+
+/* Estilo para las etiquetas (labels) */
+.form-label {
+    display: block;
+    /* Asegura que la etiqueta esté en su propia línea */
+    font-weight: bold;
+    margin-bottom: 5px;
+    /* Espacio entre la etiqueta y el campo de entrada */
+}
+
+/* Estilo para los campos de entrada (inputs, textareas) */
+.form-input {
+    width: 100%;
+    /* Ocupa todo el ancho del contenedor */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+    /* Asegura que el padding no afecte el ancho total */
+}
+
+.form-input:focus {
+    border-color: #0866ff;
+    /* Cambia el color del borde al hacer foco */
+    outline: none;
+    /* Quita el contorno por defecto del navegador */
+    box-shadow: 0 0 5px rgba(8, 102, 255, 0.5);
+    /* Añade un brillo sutil */
+}
+
+/* Estilo para los mensajes de error de Devise */
+#error_explanation {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+#error_explanation h2 {
+    font-size: 18px;
+    margin-top: 0;
+}
