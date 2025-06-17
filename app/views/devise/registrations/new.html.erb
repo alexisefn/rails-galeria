@@ -12,14 +12,22 @@
     <div class="form-field">
       <%= f.label :password, class: "form-label" %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> caracteres como mínimo)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class: "form-input" %>
+        <em>(<%= @minimum_password_length %> caracteres como mínimo)</em>
+      <% end %>
+      <br />
+      
+      <div class="password-wrapper" data-controller="password-visibility">
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-input", data: { password_visibility_target: "input" } %>
+        <span class="password-toggle-icon" data-action="click->password-visibility#toggle" data-password-visibility-target="icon">👁️</span>
+      </div>
     </div>
 
     <div class="form-field">
       <%= f.label :password_confirmation, "Confirmar contraseña", class: "form-label" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input" %>
+      <div class="password-wrapper" data-controller="password-visibility">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input", data: { password_visibility_target: "input" } %>
+        <span class="password-toggle-icon" data-action="click->password-visibility#toggle" data-password-visibility-target="icon">👁️</span>
+      </div>
     </div>
 
     <div class="actions">

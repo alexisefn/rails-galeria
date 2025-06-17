@@ -28,15 +28,15 @@
     <p class="alert"><%= alert %></p>
     
     <%# Enlaces de registro e inicio de sesión %>
-    <% if user_signed_in? %>
-      <p>
-        ¡Hola, <%= current_user.email %>!
-        <%= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete %>
-      </p>
-    <% else %>
-      <%= link_to "Registrarse", new_user_registration_path %> o
-      <%= link_to "Iniciar Sesión", new_user_session_path %>
-    <% end %>
+    <div class="auth-links">
+      <% if user_signed_in? %>
+        <span>Hola, <%= current_user.email %>!</span>
+        <%= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: "button button-secondary" %>
+      <% else %>
+        <%= link_to "Registrarse", new_user_registration_path, class: "button" %>
+        <%= link_to "Iniciar Sesión", new_user_session_path, class: "button button-secondary" %>
+      <% end %>
+    </div>
     
     <hr>
 

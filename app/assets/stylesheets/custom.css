@@ -20,22 +20,44 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Estilo para el botón principal */
+/* Estilo para el botón principal (aplica a <a> y <button>) */
 .button {
     display: inline-block;
-    background-color: #0866ff;
-    color: white;
     padding: 10px 15px;
     border-radius: 6px;
     font-weight: bold;
     text-decoration: none;
+    border: none;
+    /* Asegura que no haya borde por defecto */
+    cursor: pointer;
+    /* Muestra una mano al pasar por encima */
+    font-family: inherit;
+    /* Usa la misma fuente que el resto del body */
+    font-size: 1em;
+    /* Usa el mismo tamaño de fuente base */
+    text-align: center;
+
+    /* Estilos de color para el botón primario */
+    background-color: #0866ff;
+    color: white;
 }
 
 .button:hover {
     background-color: #0655d4;
     text-decoration: none;
+    color: white;
 }
 
+/* Un estilo secundario para los botones, con un aspecto más ligero */
+.button.button-secondary {
+    background-color: #e4e6eb;
+    color: #050505;
+}
+
+.button.button-secondary:hover {
+    background-color: #dadde1;
+    color: #050505;
+}
 
 /* --- ESTILOS DE LA CUADRÍCULA (GRID) --- */
 
@@ -161,4 +183,42 @@ a:hover {
 #error_explanation h2 {
     font-size: 18px;
     margin-top: 0;
+}
+
+/* Contenedor para los links de autenticación en la cabecera */
+.auth-links {
+    display: flex;
+    justify-content: flex-end;
+    /* Alinea los elementos a la derecha */
+    align-items: center;
+    gap: 15px;
+    /* Espacio entre los elementos */
+    padding: 10px 20px;
+}
+
+/* Un estilo secundario para los botones, con un aspecto más ligero */
+.button.button-secondary {
+    background-color: #e4e6eb;
+    color: #050505;
+}
+
+.button.button-secondary:hover {
+    background-color: #dadde1;
+}
+
+
+/* Icono para ver password en formularios */
+.password-wrapper {
+    position: relative;
+    /* Contenedor necesario para posicionar el icono */
+}
+
+.password-toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    /* Centra el icono verticalmente */
+    cursor: pointer;
+    color: #65676b;
 }

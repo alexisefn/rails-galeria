@@ -15,7 +15,7 @@ class PinsController < ApplicationController
     @pin = current_user.pins.build(pin_params)
 
     if @pin.save
-      redirect_to root_path, notice: "Pin creado exitosamente."
+      redirect_to root_path, notice: "Foto subida exitosamente."
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class PinsController < ApplicationController
   def update
     @pin = Pin.find(params[:id])
     if @pin.update(pin_params)
-      redirect_to @pin, notice: "Pin actualizado exitosamente."
+      redirect_to @pin, notice: "Foto editada exitosamente."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,7 +41,7 @@ class PinsController < ApplicationController
   def destroy
     @pin = Pin.find(params[:id])
     @pin.destroy
-    redirect_to root_path, notice: "Pin eliminado exitosamente.", status: :see_other
+    redirect_to root_path, notice: "Foto eliminada exitosamente.", status: :see_other
   end
 
   private
