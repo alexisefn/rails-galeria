@@ -12,4 +12,13 @@ class User < ApplicationRecord
   def likes?(pin)
     liked_pins.include?(pin)
   end
+
+  # Para definir "nombres de usuarios" dentro del sitio
+  def username
+    # self.email es el correo del usuario, ej: "usuario@ejemplo.com"
+    # .split('@') lo divide en ["usuario", "ejemplo.com"]
+    # .first toma el primer elemento: "usuario"
+    # .capitalize lo pone con la primera letra en mayúscula: "Usuario"
+    self.email.split('@').first.capitalize
+  end
 end
