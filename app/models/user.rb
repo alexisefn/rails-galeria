@@ -19,6 +19,6 @@ class User < ApplicationRecord
     # .split('@') lo divide en ["usuario", "ejemplo.com"]
     # .first toma el primer elemento: "usuario"
     # .capitalize lo pone con la primera letra en mayúscula: "Usuario"
-    self.email.split('@').first.capitalize
+    self.email.split("@").first.capitalize
   end
 end
