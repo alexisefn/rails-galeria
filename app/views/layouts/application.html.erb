@@ -30,7 +30,7 @@
     <%# Enlaces de registro e inicio de sesión %>
     <div class="auth-links">
       <% if user_signed_in? %>
-        <span>Hola, <%= current_user.email %>!</span>
+        <span>Hola, <%= current_user.username %>!</span>
         <%= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: "button button-secondary" %>
       <% else %>
         <%= link_to "Registrarse", new_user_registration_path, class: "button" %>

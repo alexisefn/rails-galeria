@@ -1,7 +1,9 @@
-<h1>Galería de Fotos</h1>
+<div style="text-align: center; margin-bottom: 30px;">
+  <h1>Pines de <%= @user.username %></h1>
+  <p>Explora todas las imágenes que ha compartido <%= @user.username %>.</p>
+</div>
 
-<p><%= link_to "Nueva Foto", new_pin_path, class: "button" %></p>
-
+<%# Para reutilizar la misma cuadrícula de la página principal %>
 <div class="pins-container">
   <% @pins.each do |pin| %>
     <div class="pin-card">
@@ -13,7 +15,7 @@
       <div class="pin-card-body">
         <p class="pin-description"><%= pin.description %></p>
         <%= render 'likes/like_button', pin: pin %>
-        <p class="pin-user">Publicado por <%= link_to pin.user.username, user_path(pin.user) %></p>
+        <%# En el perfil, no se necesita mostrar el autor de nuevo, ya que todos son del mismo usuario %>
       </div>
     </div>
   <% end %>
