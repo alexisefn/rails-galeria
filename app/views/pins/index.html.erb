@@ -13,7 +13,7 @@
       <div class="pin-card-body">
         <p class="pin-description"><%= pin.description %></p>
         <%= render 'likes/like_button', pin: pin %>
-        <p class="pin-user">Publicado por <%= pin.user.email %></p>
+        <p class="pin-user">Publicado por <%= pin.user.username %></p>
       </div>
     </div>
   <% end %>
