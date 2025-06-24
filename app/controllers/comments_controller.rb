@@ -2,18 +2,19 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    # 1. Encontrar el Pin al que se le va a añadir el comentario
     @pin = Pin.find(params[:pin_id])
-
-    # 2. Crear el comentario asociado a ese Pin y al usuario actual
     @comment = @pin.comments.build(comment_params)
     @comment.user = current_user
 
-    # 3. Guardar el comentario y redirigir
-    if @comment.save
-      redirect_to pin_path(@pin), notice: "Comentario añadido exitosamente."
-    else
-      redirect_to pin_path(@pin), alert: "Error al añadir el comentario."
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to pin_path(@pin), notice: "Comentario añadido exitosamente." }
+        # Renderizará create.turbo_stream.erb si la petición es de Turbo
+        format.turbo_stream
+      else
+        # Si falla, simplemente redirigimos de vuelta con una alerta
+        format.html { redirect_to pin_path(@pin), alert: "Error al añadir el comentario." }
+      end
     end
   end
 

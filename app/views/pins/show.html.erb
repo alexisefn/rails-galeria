@@ -34,32 +34,21 @@
   <div style="margin-top: 40px;">
     <h2 style="font-size: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">Comentarios</h2>
 
-    <%# Lista de comentarios existentes %>
-    <div id="comments" style="margin-top: 20px;">
+    <%# Contenedor para la lista de comentarios con un ID dinámico %>
+    <div id="<%= dom_id(@pin, :comments) %>" style="margin-top: 20px;">
       <% if @pin.comments.any? %>
-        <% @pin.comments.order(created_at: :desc).each do |comment| %>
-          <div style="border-bottom: 1px solid #eee; padding: 10px 0;">
-            <p><strong><%= comment.user.username %></strong> dijo:</p>
-            <p><%= comment.body %></p>
-          </div>
-        <% end %>
+        <%# Renderizamos el parcial por cada comentario %>
+        <%= render @pin.comments.order(created_at: :desc) %>
       <% else %>
-        <p>Aún no hay comentarios. ¡Sé el primero!</p>
+        <p id="no-comments-yet">Aún no hay comentarios. ¡Sé el primero!</p>
       <% end %>
     </div>
 
-    <%# Formulario para añadir un nuevo comentario %>
-    <div id="comment-form" style="margin-top: 30px;">
+    <%# Contenedor para el formulario %>
+    <div id="comment-form">
       <% if user_signed_in? %>
-        <%= form_with(model: [@pin, @pin.comments.build]) do |form| %>
-          <div class="field">
-            <%= form.label :body, "Tu comentario:" %><br>
-            <%= form.text_area :body, rows: 4, style: "width: 100%;" %>
-          </div>
-          <div class="actions" style="margin-top: 10px;">
-            <%= form.submit "Enviar Comentario" %>
-          </div>
-        <% end %>
+        <%# Renderizamos el parcial del formulario %>
+        <%= render 'comments/form', pin: @pin %>
       <% else %>
         <p><%= link_to "Inicia sesión", new_user_session_path %> para dejar un comentario.</p>
       <% end %>

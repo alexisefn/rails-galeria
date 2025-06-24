@@ -1,0 +1,12 @@
+<%# 1. Añade el nuevo comentario al principio de la lista de comentarios %>
+<%= turbo_stream.prepend dom_id(@pin, :comments) do %>
+  <%= render @comment %>
+<% end %>
+
+<%# 2. Reemplaza el formulario antiguo por uno nuevo (y por tanto, vacío) %>
+<%= turbo_stream.replace "comment-form" do %>
+  <%= render 'comments/form', pin: @pin %>
+<% end %>
+
+<%# 3. Elimina el mensaje "Aún no hay comentarios" si existe %>
+<%= turbo_stream.remove "no-comments-yet" %>
