@@ -1,22 +1,30 @@
-<div style="text-align: center; margin-bottom: 30px;">
-  <h1>Pines de <%= @user.username %></h1>
-  <p>Explora todas las imágenes que ha compartido <%= @user.username %>.</p>
+<div class="profile-header" style="text-align: center; margin-bottom: 30px;">
+  <h1><%= @user.username %></h1>
 </div>
 
-<%# Para reutilizar la misma cuadrícula de la página principal %>
-<div class="pins-container">
-  <% @pins.each do |pin| %>
-    <div class="pin-card">
-      <%= link_to pin do %>
-        <% if pin.image.attached? %>
-          <%= image_tag pin.image %>
-        <% end %>
+<%# Se usa un controlador de Stimulus para manejar las pestañas %>
+<div data-controller="tabs">
+  <div class="profile-tabs">
+    <a href="#" class="tab-link active" data-action="click->tabs#switch" data-tab-name="uploads">Publicaciones</a>
+
+    <%# LÓGICA DE PRIVACIDAD %>
+    <%# Solo muestra la pestaña "Me Gusta" si el usuario logueado es el dueño del perfil %>
+    <% if current_user == @user %>
+      <a href="#" class="tab-link" data-action="click->tabs#switch" data-tab-name="likes">Me Gusta</a>
+    <% end %>
+  </div>
+
+  <div class="tab-content active" id="uploads-content">
+    <%= render 'pins/pin_grid', pins: @pins %>
+  </div>
+
+  <% if current_user == @user %>
+    <div class="tab-content" id="likes-content" style="display: none;">
+      <% if @liked_pins.any? %>
+        <%= render 'pins/pin_grid', pins: @liked_pins %>
+      <% else %>
+        <p style="text-align: center; padding: 40px;">Aún no te ha gustado ningún pin.</p>
       <% end %>
-      <div class="pin-card-body">
-        <p class="pin-description"><%= pin.description %></p>
-        <%= render 'likes/like_button', pin: pin %>
-        <%# En el perfil, no se necesita mostrar el autor de nuevo, ya que todos son del mismo usuario %>
-      </div>
     </div>
   <% end %>
 </div>

@@ -2,19 +2,4 @@
 
 <p><%= link_to "Nueva Foto", new_pin_path, class: "button" %></p>
 
-<div class="pins-container">
-  <% @pins.each do |pin| %>
-    <div class="pin-card">
-      <%= link_to pin do %>
-        <% if pin.image.attached? %>
-          <%= image_tag pin.image %>
-        <% end %>
-      <% end %>
-      <div class="pin-card-body">
-        <p class="pin-description"><%= pin.description %></p>
-        <%= render 'likes/like_button', pin: pin %>
-        <p class="pin-user">Publicado por <%= link_to pin.user.username, user_path(pin.user) %></p>
-      </div>
-    </div>
-  <% end %>
-</div>
+<%= render 'pins/pin_grid', pins: @pins %>

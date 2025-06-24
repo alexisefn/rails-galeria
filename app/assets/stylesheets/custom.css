@@ -222,3 +222,29 @@ a:hover {
     cursor: pointer;
     color: #65676b;
 }
+
+/* Estilos para la interfaz de pestañas del perfil */
+.profile-tabs {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.tab-link {
+    padding: 10px 20px;
+    font-weight: bold;
+    color: #65676b;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    /* Alinea el borde inferior con el borde del contenedor */
+}
+
+.tab-link:hover {
+    background-color: #f0f2f5;
+    text-decoration: none;
+}
+
+.tab-link.active {
+    color: #0866ff;
+    border-bottom-color: #0866ff;
+}
