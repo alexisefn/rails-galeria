@@ -13,8 +13,6 @@
     Publicado por: <strong><%= link_to @pin.user.username, user_path(@pin.user) %></strong>
   </p>
 
-  <br>
-
   <%# --- Bloque de Acciones para el dueño del Pin --- %>
   <% if user_signed_in? && @pin.user == current_user %>
     <div style="margin-top: 20px; padding: 10px; background-color: #f0f2f5; border-radius: 8px;">
@@ -27,6 +25,8 @@
         </div>
     </div>
   <% end %>
+
+  <br>
 
   <%= link_to '← Volver a la galería', root_path %>
 

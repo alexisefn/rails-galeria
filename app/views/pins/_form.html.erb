@@ -1,7 +1,6 @@
 <%= form_with(model: @pin, html: { class: "form-container" }) do |form| %>
   <% if form.object.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(form.object.errors.count, "error") %> impidieron guardar este pin:</h2>
       <ul>
         <% form.object.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,14 +10,14 @@
   <% end %>
 
   <div class="form-field">
-    <%= form.label :image, class: "form-label" %>
+    <%= form.label :image, "Imágen", class: "form-label" %>
 
     <%# Si se está EDITANDO un pin que ya tiene imagen, la mostramos %>
     <% if form.object.persisted? && form.object.image.attached? %>
       <p>Imagen actual:</p>
       <%= image_tag form.object.image, width: "200px" %>
       <p style="font-size: 14px; color: #65676b; margin-top: 10px;">
-        Opcional: Para reemplazar la imagen, selecciona un nuevo archivo.
+        Para reemplazar la imagen, selecciona un nuevo archivo.
       </p>
     <% end %>
 
@@ -27,11 +26,13 @@
   </div>
 
   <div class="form-field">
-    <%= form.label :description, class: "form-label" %>
+    <%= form.label :description, "Descripción", class: "form-label" %>
     <%= form.text_area :description, class: "form-input", rows: 4 %>
   </div>
 
   <div class="actions">
     <%= form.submit "Guardar Foto", class: "button" %>
   </div>
+
+  <%= render "devise/shared/links" %>
 <% end %>

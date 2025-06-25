@@ -1,6 +1,13 @@
 # Traducciones adicionales en https://github.com/plataformatec/devise/wiki/I18n
 
 es:
+  activerecord:
+    attributes:
+      user:
+        email: "Correo electrónico"
+        password: "Contraseña"
+        password_confirmation: "Confirmación de contraseña"
+        remember_me: "Recordarme"
   devise:
     confirmations:
       confirmed: "Tu correo electrónico ha sido confirmado exitosamente."
@@ -55,11 +62,33 @@ es:
       unlocked: "Tu cuenta ha sido desbloqueada. Inicia sesión para continuar."
   errors:
     messages:
+      accepted: "debe ser aceptado"
       already_confirmed: "ya fue confirmada. Intenta ingresar."
+      blank: "no puede estar en blanco"
+      confirmation: "no coincide"
       confirmation_period_expired: "necesita ser confirmada dentro de %{period}, por favor pide una nueva"
+      empty: "no puede estar vacío"
+      equal_to: "debe ser igual a %{count}"
+      even: "debe ser par"
+      exclusion: "está reservado"
       expired: "ha expirado, por favor pide una nueva"
+      greater_than: "debe ser mayor que %{count}"
+      greater_than_or_equal_to: "debe ser mayor o igual que %{count}"
+      inclusion: "no está incluido en la lista"
+      invalid: "es inválido"
+      less_than: "debe ser menor que %{count}"
+      less_than_or_equal_to: "debe ser menor o igual que %{count}"
+      not_a_number: "no es un número"
+      not_an_integer: "debe ser un entero"
       not_found: "no encontrado"
       not_locked: "no ha sido bloqueada"
       not_saved:
         one: "Ha ocurrido 1 error:"
         other: "Han ocurrido %{count} errores:"
+      odd: "debe ser impar"
+      present: "debe estar en blanco"
+      required: "debe existir"
+      taken: "ya está en uso"
+      too_long: "es demasiado largo (máximo %{count} caracteres)"
+      too_short: "es demasiado corto (mínimo %{count} caracteres)"
+      wrong_length: "no tiene la longitud correcta (debe ser de %{count} caracteres)"

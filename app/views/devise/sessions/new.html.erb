@@ -3,13 +3,16 @@
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-field">
-      <%= f.label :email, class: "form-label" %><br />
+      <%= f.label :email, class: "form-label" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input" %>
     </div>
 
     <div class="form-field">
-      <%= f.label :password, "Contraseña", class: "form-label" %><br />
-      <%= f.password_field :password, autocomplete: "current-password", class: "form-input" %>
+      <%= f.label :password, "Contraseña", class: "form-label" %>
+      <div class="password-wrapper" data-controller="password-visibility">
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-input", data: { password_visibility_target: "input" } %>
+        <span class="password-toggle-icon" data-action="click->password-visibility#toggle" data-password-visibility-target="icon">👁️</span>
+      </div>
     </div>
 
     <%# Devise puede añadir una opción de "Recordarme" si la configuras %>

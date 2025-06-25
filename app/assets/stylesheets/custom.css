@@ -7,6 +7,16 @@ body {
     padding: 20px;
 }
 
+/* Contenedor principal para toda la página */
+.page-container {
+    max-width: 1200px;
+    /* Limita el ancho máximo del contenido */
+    margin: 20px auto;
+    /* Centra el contenedor en la página y le da un margen superior/inferior */
+    padding: 0 20px;
+    /* Añade un poco de espacio a los lados para que el contenido no se pegue a los bordes en pantallas pequeñas */
+}
+
 h1 {
     color: #1c1e21;
 }
@@ -81,6 +91,10 @@ a:hover {
     /* Asegura que la imagen no se salga de los bordes redondeados */
     break-inside: avoid;
     /* Ayuda a prevenir que las tarjetas se corten en la cuadrícula */
+    display: flex;
+    /* Convierte la tarjeta en un contenedor Flexbox */
+    flex-direction: column;
+    /* Apila los hijos (imagen y texto) verticalmente */
 }
 
 /* 3. La Imagen dentro de la tarjeta */
@@ -96,6 +110,14 @@ a:hover {
 /* 4. El cuerpo de la tarjeta (texto) */
 .pin-card-body {
     padding: 15px;
+    flex-grow: 1;
+    /* Permite que este bloque crezca y ocupe el espacio sobrante */
+    display: flex;
+    /* Lo convierte también en un contenedor Flexbox... */
+    flex-direction: column;
+    /* ...que apila su propio contenido (descripción, likes, autor) verticalmente... */
+    justify-content: flex-end;
+    /* ...y alinea todo su contenido al fondo. */
 }
 
 .pin-description {
@@ -247,4 +269,45 @@ a:hover {
 .tab-link.active {
     color: #0866ff;
     border-bottom-color: #0866ff;
+}
+
+/* Estilo para la nueva cabecera principal */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    /* ¡La clave! Empuja a un hijo al inicio y al otro al final. */
+    align-items: center;
+    /* Centra todo verticalmente para que se vea prolijo. */
+    padding: 12px 20px;
+    /* Espaciado interno */
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+    /* Espacio antes del contenido principal */
+    border-radius: 12px;
+}
+
+/* Estilos para los mensajes de notice/alert para que se vean como "píldoras" o "badges" */
+.flash {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.flash.notice {
+    background-color: #d1e7dd;
+    /* Un verde sutil para éxito */
+    color: #0f5132;
+}
+
+.flash.alert {
+    background-color: #f8d7da;
+    /* El rojo sutil que ya teníamos para errores */
+    color: #721c24;
+}
+
+/* Pequeño ajuste para el contenedor de auth-links dentro del header */
+.auth-links {
+    /* Para que no tenga padding o margen extra */
+    padding: 0;
 }
