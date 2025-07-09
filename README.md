@@ -1,4 +1,4 @@
-# Galería Rails - Un Tablón de Imágenes estilo Pinterest
+# Galería Rails - Un tablón de imágenes multiusuario
 
 ![Ruby on Rails](https://img.shields.io/badge/Ruby_on_Rails-CC0000?style=for-the-badge&logo=ruby-on-rails&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
@@ -67,8 +67,8 @@ Para ejecutar este proyecto de forma local, sigue estos pasos:
 
 1.  **Clona el repositorio:**
     ```bash
-    git clone [URL_DE_TU_REPOSITORIO]
-    cd [NOMBRE_DE_LA_CARPETA]
+    git clone https://github.com/alexisefn/rails-galeria.git
+    cd rails-galeria
     ```
 2.  **Instala las dependencias:**
     ```bash
