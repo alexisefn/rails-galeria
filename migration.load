@@ -1,0 +1,5 @@
+LOAD DATABASE
+    FROM sqlite:///home/ale/misproyectos/rails-galeria/storagedevelopment.sqlite3
+    INTO postgresql:///rails_galeria_development
+
+WITH data only;
