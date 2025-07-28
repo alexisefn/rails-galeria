@@ -86,6 +86,14 @@ Para ejecutar este proyecto de forma local, sigue estos pasos:
 
 ---
 
+### Capturas
+
+![Home](img/captura1.jpg)
+![Perfil](img/captura2.jpg)
+![Likes](img/captura3.jpg)
+
+---
+
 ## Próximos Pasos
 
 * Continuar reforzando mis conocimientos en Rails actualizando o creando nuevos proyectos.
