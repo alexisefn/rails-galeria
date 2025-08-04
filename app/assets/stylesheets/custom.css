@@ -311,3 +311,22 @@ a:hover {
     /* Para que no tenga padding o margen extra */
     padding: 0;
 }
+
+/* Contenedor para los botones de acción de un formulario */
+.form-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Estilo para los enlaces de "volver atrás" */
+.back-link {
+  color: #65676b;
+  font-weight: bold;
+  text-decoration: none;
+}
+.back-link:hover {
+  color: #050505;
+  text-decoration: underline;
+}
