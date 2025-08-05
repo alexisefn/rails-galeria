@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+  (function() {
+    function applyTheme() {
+      if (!document.body) {
+        requestAnimationFrame(applyTheme);
+        return;
+      }
+
+      // Lógica simplificada: Solo activa el modo oscuro si está explícitamente guardado.
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.body.classList.remove('light-mode');
+      } else {
+        document.body.classList.add('light-mode');
+        document.body.classList.remove('dark-mode');
+      }
+    }
+    applyTheme();
+  })();
+</script>
+
     <title><%= content_for(:title) || "Rails Galeria" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,6 +51,12 @@
           <% if alert %>
             <span class="flash alert"><%= alert %></span>
           <% end %>
+        </div>
+
+        <div class="header-actions">
+          <div data-controller="theme-toggle" data-action="click->theme-toggle#toggle" class="theme-toggle-button" title="Cambiar tema">
+          <svg data-theme-toggle-target="sunIcon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.106a.75.75 0 0 1 0 1.06l-1.591 1.591a.75.75 0 1 1-1.06-1.06l1.591-1.591a.75.75 0 0 1 1.06 0ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5h2.25a.75.75 0 0 1 .75.75ZM17.894 17.894a.75.75 0 0 1-1.06 0l-1.591-1.591a.75.75 0 1 1 1.06-1.06l1.591 1.591a.75.75 0 0 1 0 1.06ZM12 18a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.894 6.106a.75.75 0 0 1 1.06 0l-1.591 1.591a.75.75 0 0 1-1.06-1.06l1.591-1.591ZM3 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 3 12ZM6.106 17.894a.75.75 0 0 1 0-1.06l1.591-1.591a.75.75 0 1 1 1.06 1.06l-1.591 1.591a.75.75 0 0 1-1.06 0Z"/></svg>
+          <svg data-theme-toggle-target="moonIcon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.981A10.503 10.503 0 0 1 18 19.5a10.5 10.5 0 0 1-10.5-10.5A10.503 10.503 0 0 1 9.528 1.718ZM18.282 11.282A7.5 7.5 0 0 1 12 18a7.5 7.5 0 0 1-5.455-12.545A7.47 7.47 0 0 0 12 6a7.5 7.5 0 0 1 6.282 5.282Z" clip-rule="evenodd" /></svg>
         </div>
 
         <%# Enlaces de registro e inicio de sesión %>

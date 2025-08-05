@@ -1,7 +1,40 @@
+/* Definición de la paleta de colores para ambos temas */
+:root {
+  /* Tema Claro (Por defecto) */
+  --bg-color: #f0f2f5;
+  --card-bg-color: #ffffff;
+  --text-color: #050505;
+  --text-color-secondary: #65676b;
+  --border-color: #ddd;
+  --accent-color: #0866ff;
+}
+
+body.dark-mode {
+  /* Tema Oscuro */
+  --bg-color: #18191a;
+  --card-bg-color: #242526;
+  --text-color: #e4e6eb;
+  --text-color-secondary: #b0b3b8;
+  --border-color: #3e4042;
+  --accent-color: #4599ff;
+}
+
+/* El media query es un extra para el comportamiento por defecto, no es el causante del error */
+@media (prefers-color-scheme: dark) {
+  body:not(.light-mode) {
+    --bg-color: #18191a;
+    --card-bg-color: #242526;
+    --text-color: #e4e6eb;
+    --text-color-secondary: #b0b3b8;
+    --border-color: #3e4042;
+    --accent-color: #4599ff;
+  }
+}
+
 /* Estilos Generales para todo el sitio */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f0f2f5;
+    background-color: var(--bg-color);
     color: #333;
     margin: 0;
     padding: 20px;
@@ -22,7 +55,7 @@ h1 {
 }
 
 a {
-    color: #0866ff;
+    color: var(--accent-color);
     text-decoration: none;
 }
 
@@ -48,7 +81,7 @@ a:hover {
     text-align: center;
 
     /* Estilos de color para el botón primario */
-    background-color: #0866ff;
+    background-color: var(--accent-color);
     color: white;
 }
 
@@ -61,12 +94,12 @@ a:hover {
 /* Un estilo secundario para los botones, con un aspecto más ligero */
 .button.button-secondary {
     background-color: #e4e6eb;
-    color: #050505;
+    color: var(--text-color);
 }
 
 .button.button-secondary:hover {
     background-color: #dadde1;
-    color: #050505;
+    color: var(--text-color);
 }
 
 /* --- ESTILOS DE LA CUADRÍCULA (GRID) --- */
@@ -84,7 +117,7 @@ a:hover {
 /* 2. Cada Tarjeta Individual (Pin Card) */
 .pin-card {
     background-color: white;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -151,7 +184,7 @@ a:hover {
     /* Centra el formulario en la página */
     padding: 25px;
     background-color: white;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -184,7 +217,7 @@ a:hover {
 }
 
 .form-input:focus {
-    border-color: #0866ff;
+    border-color: var(--accent-color);
     /* Cambia el color del borde al hacer foco */
     outline: none;
     /* Quita el contorno por defecto del navegador */
@@ -221,7 +254,7 @@ a:hover {
 /* Un estilo secundario para los botones, con un aspecto más ligero */
 .button.button-secondary {
     background-color: #e4e6eb;
-    color: #050505;
+    color: var(--text-color);
 }
 
 .button.button-secondary:hover {
@@ -262,13 +295,13 @@ a:hover {
 }
 
 .tab-link:hover {
-    background-color: #f0f2f5;
+    background-color: var(--bg-color);
     text-decoration: none;
 }
 
 .tab-link.active {
-    color: #0866ff;
-    border-bottom-color: #0866ff;
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
 }
 
 /* Estilo para la nueva cabecera principal */
@@ -281,7 +314,7 @@ a:hover {
     padding: 12px 20px;
     /* Espaciado interno */
     background-color: #ffffff;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-color);
     margin-bottom: 20px;
     /* Espacio antes del contenido principal */
     border-radius: 12px;
@@ -327,6 +360,30 @@ a:hover {
   text-decoration: none;
 }
 .back-link:hover {
-  color: #050505;
+  color: var(--text-color);
   text-decoration: underline;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.theme-toggle-button {
+  background-color: var(--card-bg-color);
+  border: 1px solid var(--border-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.theme-toggle-button .icon {
+  width: 24px;
+  height: 24px;
+  color: var(--text-color);
 }
